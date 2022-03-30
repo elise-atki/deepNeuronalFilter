@@ -1,0 +1,11 @@
+Run ./eeg_filter 5 for audio data stored in participant 5.
+
+See 'dnf so far' for screenshots of current code.
+
+Issues :
+
+Outer and inner files contain wrong info as outer contains both inner & outer data from rawp300 & inner contains the outer data.
+
+Gains & filtering messy -still playing around with these.
+
+Began integrating the DNF into my previous lms code - still debugging.
