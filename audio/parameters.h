@@ -13,12 +13,12 @@ const int nSubj = 20; // audio in subj no.5
 
 // pre-filtering
 const int filterorder = 2;
-const double innerHighpassCutOff = 0.5; // Hz
-const double outerHighpassCutOff = 5; // Hz
-const double LaplaceCutOff = 0.5; // Hz
+const double innerHighpassCutOff = 20000; // Hz 0.5 400
+const double outerHighpassCutOff = 400; // Hz 5, 20000
+const double LaplaceCutOff = 20000; // Hz 0.5 , 20000
 
-const double powerlineFrequ = 50; // Hz
-const double bsBandwidth = 2.5; // Hz
+const double powerlineFrequ = 20000; // Hz 50 , 20000
+const double bsBandwidth = 10000; // Hz 2.5, 10000
 
 //creat circular buffers for plotting
 const int bufferLength = 1000 ;
@@ -34,8 +34,8 @@ const int NLAYERS = 6;
 const double lms_learning_rate_p300 = 0.05; //0.04, was 0.005 in lms data
 const double lms_learning_rate_tasks = 0.01; //0.01
 
-const double inner_gain = 1; //changed from 1000 to 1, SN
-const double outer_gain = 1; //changed from 1000 to 1
+const double inner_gain = 10; //changed from 1000 to 1, SN
+const double outer_gain = 1; //changed from 1000 to 1, N
 const double remover_gain = 1;
 
 // Very slow

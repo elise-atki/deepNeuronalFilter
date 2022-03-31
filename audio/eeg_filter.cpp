@@ -49,7 +49,7 @@ void processOneSubject(const int subjIndex, const char* tasksubdir = nullptr, co
 
 	int fs = 44100; //250 or 44100 for audio
 	if (nullptr != tasksubdir) {
-		fs = 500;
+	  fs = 44100;//500
 		outpPrefix = tasksubdir;
 	}
 
@@ -57,7 +57,7 @@ void processOneSubject(const int subjIndex, const char* tasksubdir = nullptr, co
 
 	const int samplesNoLearning = 3 * fs / innerHighpassCutOff; //do i need to change this?
 	
-	const int nTapsDNF = 100; //fs / outerHighpassCutOff; //or 100 or 500;
+	const int nTapsDNF = 100; //fs / outerHighpassCutOff; //or 100 ;
 	fprintf(stderr,"nTapsDNF = %d\n",nTapsDNF);
 	
 	boost::circular_buffer<double> oo_buf(bufferLength);
@@ -178,7 +178,7 @@ void processOneSubject(const int subjIndex, const char* tasksubdir = nullptr, co
 		const double outerhp = outer_filterHP.filter(outer_raw);
 		const double outer = outer_filterBS.filter(outerhp);
 
-		double f_nn = dnf.filter(inner_filtered,outer); //filtering using dnn: filtered N, SN as outer
+		double f_nn = dnf.filter(inner_filtered,outer);//inner - SN, outer - N
 
 		double w_eta = dnf_learning_rate_p300; //10 in parameters.h file
 		if (nullptr != tasksubdir) {
@@ -214,7 +214,7 @@ void processOneSubject(const int subjIndex, const char* tasksubdir = nullptr, co
 		} else {
 			lms_filter.setLearningRate(0);
 		}
-		double corrLMS = lms_filter.filter(outer);
+		double corrLMS = lms_filter.filter(outer); //noise through filter(N->out)
 		double lms_output = dnf.getDelayedSignal() - corrLMS;
 		if (count > (samplesNoLearning+nTapsDNF)){
 			lms_filter.lms_update(lms_output);
