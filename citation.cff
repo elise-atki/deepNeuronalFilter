@@ -1,0 +1,9 @@
+cff-version: 1
+message: "If you use this software, please cite it as below."
+author:
+  - family-names: Atkinson
+    given-names: Elise
+title: "Noise Cancellation with Deep Networks : FINAL YEAR PROJECT REPORT
+BACHELOR OF ENGINEERING"
+url: https://github.com/elise-atki/deepNeuronalFilter/new/main
+date-released: 24/04/2022
